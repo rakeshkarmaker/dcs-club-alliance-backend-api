@@ -1,14 +1,14 @@
-
-
-
-
 // //v1.0.03 Share the Prisma validation service across the application, such as the UniqueCheck Decorator
 
 // // and any future validation services that may be added later.
 // //BTW, this is a sample of industry grade code structure for NestJS with Prisma integration.
 
 // src/common/validation/validation.service.ts
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
 
 @Injectable()
@@ -47,8 +47,7 @@ export class ValidationService {
 
     if (!entity)
       throw new NotFoundException(
-        errorMessage ||
-          `The ${model.toString()} with ID ${id} does not exist.`,
+        errorMessage || `The ${model.toString()} with ID ${id} does not exist.`,
       );
 
     return true;
@@ -101,7 +100,6 @@ export class ValidationService {
 // import {ConflictException, Injectable, NotFoundException} from '@nestjs/common';
 // import { PrismaService } from "src/prisma/prisma.service";
 
-
 // @Injectable()
 // export class ValidationService{
 //     //Here, we can Add common validation methods here in the future
@@ -116,9 +114,8 @@ export class ValidationService {
 //         // errorMessage: Optional custom error message
 //         // excludeId: Optional ID to exclude from the check (useful for updates)
 
-        
-//         const validData :any= {[field]:value}; // Dynamic field assignment for Prisma query 
-//         // if(excludeId) validData['id'] = { not: excludeId}; // Exclude the record with the given ID! 
+//         const validData :any= {[field]:value}; // Dynamic field assignment for Prisma query
+//         // if(excludeId) validData['id'] = { not: excludeId}; // Exclude the record with the given ID!
 //         if (excludeId !== undefined) validData['id'] = { not: excludeId }; //v2- Exclude the record with the given ID! (Better check for undefined)
 
 //         const modelClient = this.prisma[model] as any; // Dynamic model access from Prisma Client
@@ -132,7 +129,7 @@ export class ValidationService {
 //     // Check if an entity(model) exists in the database based on the id basically.
 //     async ValidateEntityExists(model: keyof PrismaClient, id:number, errorMessage?:string): Promise<boolean> {
 //         const modelClient = this.prisma[model] as any; // Dynamic model access from Prisma Client
-//         // const entityCounts = await modelClient.count( {where: {id}} ); 
+//         // const entityCounts = await modelClient.count( {where: {id}} );
 //         const entity = await modelClient.findUnique({ where: { id } });//v2- Using findUnique to check existence by ID faster
 
 //         if (!entity) throw new NotFoundException(errorMessage || `The ${model.toString()} with ID ${id} does not exist.`);
@@ -143,7 +140,7 @@ export class ValidationService {
 //     async ValidateStudentProfileExists(userId:number,schoolId:number, errorMessage?:string): Promise<boolean> {
 //         // First,we validate if the school exists
 //         // await this.ValidateEntityExists('school', schoolId, `The School with ID ${schoolId} does not exist.`);
-        
+
 //         //Secondly,we check if the student profile exists for the given userId
 
 //         const studentProfile = await this.prisma.studentInfo.findUnique( {where: {userId}} );
@@ -157,7 +154,6 @@ export class ValidationService {
 //         return true; // If all checks pass, return true
 //     }
 
-
 //     async ValidateClubMembership(userId:number, clubId:number, errorMessage?:string): Promise<boolean> {
 //         // Check if the club exists
 //         await this.ValidateEntityExists('club', clubId, `The Club with ID ${clubId} does not exist.`);
@@ -167,6 +163,4 @@ export class ValidationService {
 //         return true; // If all checks pass, return true
 //     }
 
-
-    
 // }

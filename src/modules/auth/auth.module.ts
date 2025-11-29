@@ -6,19 +6,19 @@ import { AuthController } from './auth.controller';
 import { UsserRepository } from '../users/repositories/user.repository';
 
 @Module({
-    imports:[PrismaModule],
-    controllers: [AuthController],
-    providers: [
-        AuthService,
-        {
-            provide: 'IAuthRepository',
-            useClass: AuthRepository,
-        },
-        {
-            provide: 'IUserRepository',
-            useClass: UsserRepository,
-        },
-    ],
-    exports: ['IAuthRepository', AuthService],
+  imports: [PrismaModule],
+  controllers: [AuthController],
+  providers: [
+    AuthService,
+    {
+      provide: 'IAuthRepository',
+      useClass: AuthRepository,
+    },
+    {
+      provide: 'IUserRepository',
+      useClass: UsserRepository,
+    },
+  ],
+  exports: ['IAuthRepository', AuthService],
 })
 export class AuthModule {}

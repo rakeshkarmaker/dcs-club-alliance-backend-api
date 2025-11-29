@@ -8,16 +8,16 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   //v1.0.0 adding swagger
   const config = new DocumentBuilder()
-    .setTitle("DCS Club Aliance")
-    .setDescription("API description of the app")
-    .setVersion("v1.0")
-    .addTag("dcs")
+    .setTitle('DCS Club Alliance Backend API')
+    .setDescription('API description of the app')
+    .setVersion('v1.0')
+    .addTag('dcs')
     .build();
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('apis', app, documentFactory, {
-    jsonDocumentUrl: 'apis/swagger/json'
-  })
+    jsonDocumentUrl: 'apis/swagger/json',
+  });
 
   //V1.0.2- //Using the global validation pipe in main.ts, so no need to add here again!
   app.useGlobalPipes(
@@ -32,7 +32,8 @@ async function bootstrap() {
   );
 
   // v1.0.02 adding global interceptor for response formatting (DONT understand this line well)
-  app.useGlobalInterceptors(new TransformInterceptor(), // Here, we are creating a new instance of the TransformInterceptor and passing it to the useGlobalInterceptors method of the NestJS application instance. This makes the interceptor apply to all incoming requests and outgoing responses in the application.
+  app.useGlobalInterceptors(
+    new TransformInterceptor(), // Here, we are creating a new instance of the TransformInterceptor and passing it to the useGlobalInterceptors method of the NestJS application instance. This makes the interceptor apply to all incoming requests and outgoing responses in the application.
     new ClassSerializerInterceptor(app.get(Reflector)), // This interceptor is used to automatically serialize and deserialize class instances to and from plain JavaScript objects based on the decorators defined in the classes.
   );
 
@@ -43,7 +44,5 @@ async function bootstrap() {
   app.enableCors();
 
   await app.listen(process.env.PORT ?? 3000);
-
-
 }
 bootstrap();

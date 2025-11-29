@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { LoginhistoryService } from './loginhistory.service';
 import { CreateLoginhistoryDto } from './dto/create-loginhistory.dto';
 import { UpdateLoginhistoryDto } from './dto/update-loginhistory.dto';
@@ -23,7 +31,10 @@ export class LoginhistoryController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateLoginhistoryDto: UpdateLoginhistoryDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateLoginhistoryDto: UpdateLoginhistoryDto,
+  ) {
     return this.loginhistoryService.update(+id, updateLoginhistoryDto);
   }
 

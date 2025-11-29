@@ -5,7 +5,8 @@ import { ClubRepository } from './repositories/club.repository';
 
 @Module({
   controllers: [ClubsController],
-  providers: [ClubsService,
+  providers: [
+    ClubsService,
     {
       provide: 'IClubRepository',
       useClass: ClubRepository,
@@ -13,4 +14,4 @@ import { ClubRepository } from './repositories/club.repository';
   ],
   // exports: ['IClubRepository', ClubRepository]
 })
-export class ClubsModule { }
+export class ClubsModule {}

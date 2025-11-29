@@ -20,7 +20,15 @@ import { LoginhistoryModule } from './modules/loginhistory/loginhistory.module';
       isGlobal: true,
     }),
     CommonModule, // Importing CommonModule to make its providers available throughout the application
-    AuthModule, UsersModule, ClubsModule, EventsModule, PrismaModule, CommonModule, ActivitiesModule, LoginhistoryModule], // Importing various feature modules to organize the application structure
+    AuthModule,
+    UsersModule,
+    ClubsModule,
+    EventsModule,
+    PrismaModule,
+    CommonModule,
+    ActivitiesModule,
+    LoginhistoryModule,
+  ], // Importing various feature modules to organize the application structure
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, PrismaService],
 })

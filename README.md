@@ -97,9 +97,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
-
-
-
 ## Mine:
 
 nest new dcs-club-alliance-backend-api
@@ -118,17 +115,14 @@ git add .
 git commit
 git push
 
-
 npm i --save @nestjs/swagger  
 npm i --save class-validator class-transformer
-
-
 
 npm install @nestjs/config
 npm install bcrypt
 
-
 <!-- Strcuturing -->
+
 mkdir -p src/common/{decorators,interceptors,interfaces,repositories,services} src/modules src/prisma
 
 nest g resource modules/auth

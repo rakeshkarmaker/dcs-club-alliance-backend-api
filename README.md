@@ -85,7 +85,7 @@ Check out a few resources that may come in handy when working with NestJS:
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support)=
 
 ## Stay in touch
 
@@ -98,7 +98,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## Mine:
-
 nest new dcs-club-alliance-backend-api
 cd dcs-club-alliance-backend-api
 npm install @nestjs/core @nestjs/common @nestjs/platform-express
@@ -110,30 +109,32 @@ npx prisma init
 npx prisma format
 npx prisma migrate dev --name init
 npx prisma generate
+    npm install prisma@latest --save-dev
 
+<!-- Github -->
 git add .
 git commit
 git push
 
-npm i --save @nestjs/swagger  
+<!-- Swagger API -->
+npm i --save @nestjs/swagger
 npm i --save class-validator class-transformer
 
+<!-- ETc -->
 npm install @nestjs/config
 npm install bcrypt
 
-<!-- Strcuturing -->
-
+<!-- Architecture Setup -->
 mkdir -p src/common/{decorators,interceptors,interfaces,repositories,services} src/modules src/prisma
 
 nest g resource modules/auth
 nest g resource modules/user
 nest g resource modules/clubs
-nest g resource modules/activites
+nest g resource modules/activities
 nest g resource modules/events
 nest g resource modules/loginhistory
 
-//extra
-
+<!-- Installs -->
 npm install @nestjs/common@11.1.9
 npm install @nestjs/core@11.1.9
 npm install @nestjs/platform-express@11.1.9

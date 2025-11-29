@@ -1,4 +1,4 @@
-import { IRepository } from 'src/common/interfaces/irepository.interface';
+import { IRepository } from '../../../common/interfaces/irepository.interface';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { User } from '@prisma/client';

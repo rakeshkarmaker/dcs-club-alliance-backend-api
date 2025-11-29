@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { BaseRepository } from 'src/common/repositories/base.repository';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { BaseRepository } from '../../../common/repositories/base.repository';
+import { PrismaService } from '../../../prisma/prisma.service';
 import { IAuthRepository } from '../interfaces/iauth.repository';
 import { UserAuth } from '@prisma/client';
 import { CreateAuthDto } from '../dto/create-auth.dto';

@@ -1,43 +1,29 @@
-import { ApiProperty } from '@nestjs/swagger/dist/decorators/api-property.decorator';
-import {
-  IsEmail,
-  IsDate,
-  IsNotEmpty,
-  isNotEmpty,
-  IsOptional,
-  IsString,
-  Length,
-  Matches,
-  MaxLength,
-  MinLength,
-  IsDateString,
-} from 'class-validator';
-// import { CreateUserDto } from "src/modules/users/dto/create-user.dto";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsEmail, MaxLength, MinLength, Matches, IsString, IsInt } from 'class-validator';
 
 export class CreateAuthDto {
   @ApiProperty({
     example: 'raj@example.com',
     description: 'User email address',
   })
-  @IsNotEmpty()
-  @IsEmail()
-  @MaxLength(50)
+  @IsNotEmpty({ message: 'Email is required' })
+  @IsEmail({}, { message: 'Email must be valid' })
+  @MaxLength(50, { message: 'Email must be at most 50 characters' })
   email: string;
 
-  //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
   @ApiProperty({
     example: 'StrongPass@123',
     description:
-      'Password: minimum 8 Char, Uppercase, Lowercase, Number, Special Char.',
+      'Password: minimum 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character.',
   })
-  @IsString()
-  @MinLength(8)
-  @MaxLength(20)
+  @IsString({ message: 'Password must be a string' })
+  @MinLength(8, { message: 'Password must be at least 8 characters' })
+  @MaxLength(20, { message: 'Password must be at most 20 characters' })
   @Matches(
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
     { message: 'Password too weak' },
-  ) // Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
+  )
   password: string;
 
-  userId: number;
+  userId?: number;
 }

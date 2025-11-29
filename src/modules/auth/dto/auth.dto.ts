@@ -1,18 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger/dist/decorators/api-property.decorator';
 import {
-  IsDate,
-  IsDateString,
   IsEmail,
-  IsNotEmpty,
-  IsOptional,
   IsString,
-  Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { CreateUserDto } from 'src/modules/users/dto/create-user.dto';
 import { CreateAuthDto } from './create-auth.dto';
-import { IntersectionType } from '@nestjs/mapped-types';
+// import { IntersectionType } from '@nestjs/mapped-types';
+import { IntersectionType } from '@nestjs/swagger';
+import { CreateUserDto } from '../../users/dto/create-user.dto';
 
 export class LoginDto {
   @ApiProperty({

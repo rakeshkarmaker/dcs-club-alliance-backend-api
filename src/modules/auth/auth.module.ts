@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthRepository } from './repositories/auth.repository';
-import { PrismaModule } from 'src/prisma/prisma.module';
 import { AuthController } from './auth.controller';
-import { UsserRepository } from '../users/repositories/user.repository';
+import { PrismaModule } from '../../prisma/prisma.module';
+import { UserRepository } from '../users/repositories/user.repository';
 
 @Module({
   imports: [PrismaModule],
@@ -16,7 +16,7 @@ import { UsserRepository } from '../users/repositories/user.repository';
     },
     {
       provide: 'IUserRepository',
-      useClass: UsserRepository,
+      useClass: UserRepository,
     },
   ],
   exports: ['IAuthRepository', AuthService],

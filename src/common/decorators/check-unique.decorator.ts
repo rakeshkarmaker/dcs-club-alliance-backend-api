@@ -4,7 +4,7 @@ import {
   ValidationArguments,
 } from 'class-validator';
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 
 // nestjs documentation for custom validators
 // https://github.com/typestack/class-validator?tab=readme-ov-file#custom-validation-classes

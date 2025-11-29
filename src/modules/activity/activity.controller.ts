@@ -7,27 +7,31 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { ActivitiesService } from './activities.service';
+import { ActivityService } from './activity.service';
 import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateActivityDto } from './dto/update-activity.dto';
 
 @Controller('activities')
-export class ActivitiesController {
-  constructor(private readonly activitiesService: ActivitiesService) {}
+export class ActivityController {
+  constructor(private readonly activityService: ActivityService) {}
 
   @Post()
   create(@Body() createActivityDto: CreateActivityDto) {
-    return this.activitiesService.create(createActivityDto);
+    return this.activityService.create(createActivityDto);
+  }
+  @Get('club/:clubId')
+  getActivitiesByClubId(@Param('clubId') clubId: string) {
+    return this.activityService.getByClub(+clubId);
   }
 
   @Get()
   findAll() {
-    return this.activitiesService.findAll();
+    return this.activityService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.activitiesService.findOne(+id);
+    return this.activityService.findOne(+id);
   }
 
   @Patch(':id')
@@ -35,11 +39,11 @@ export class ActivitiesController {
     @Param('id') id: string,
     @Body() updateActivityDto: UpdateActivityDto,
   ) {
-    return this.activitiesService.update(+id, updateActivityDto);
+    return this.activityService.update(+id, updateActivityDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.activitiesService.remove(+id);
+    return this.activityService.remove(+id);
   }
 }

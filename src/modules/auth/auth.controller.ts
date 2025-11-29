@@ -2,6 +2,7 @@ import { Controller, Post, Body, Patch } from '@nestjs/common';
 import { UpdateEmailDto, UpdatePassDto } from './dto/update-auth.dto';
 import { AuthService } from './auth.service';
 import { LoginDto, RegisterDto } from './dto/auth.dto';
+import { ApiBody, ApiResponse } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -9,6 +10,8 @@ export class AuthController {
 
   // @Post('signup')
   @Post('register')
+  @ApiBody({ type: RegisterDto })
+  @ApiResponse({ status: 201, description: 'User registered successfully' })
   async registerUser(@Body() registerDto: RegisterDto) {
     // Registration logic here
     return this.authService.register(registerDto);

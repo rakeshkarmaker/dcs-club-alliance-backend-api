@@ -11,7 +11,7 @@ import { PrismaService } from './prisma/prisma.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule } from '@nestjs/config';
-import { ActivitiesModule } from './modules/activities/activities.module';
+import { ActivitiesModule } from './modules/activity/activity.module';
 import { LoginhistoryModule } from './modules/loginhistory/loginhistory.module';
 @Module({
   imports: [

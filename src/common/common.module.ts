@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
 import { PasswordService } from './services/password.service';
 import { ValidationService } from './services/validation.service';
 import { CheckUniqueDecorator } from './decorators/check-unique.decorator';
+import { PrismaService } from '../prisma/prisma.service';
 
 @Module({
   controllers: [],

@@ -11,6 +11,6 @@ import { ActivityRepository } from './repositories/activity.repository';
       useClass: ActivityRepository,
     }
   ],
-  exports: ["IActivityRepository", ActivityRepository],
+  exports: ["IActivityRepository"],
 })
 export class ActivitiesModule {}

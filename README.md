@@ -143,3 +143,17 @@ npm install @types/node@22.19.1
 npm install typescript-eslint@8.47.0
 
 npm install @prisma/adapter-pg
+
+
+
+<!-- for Auth -->
+
+npm install --save @nestjs/passport passport passport-local
+npm install --save-dev @types/passport-local
+npm install --save @nestjs/jwt passport-jwt
+
+
+<!-- Generating access and refresh tokens -->
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"

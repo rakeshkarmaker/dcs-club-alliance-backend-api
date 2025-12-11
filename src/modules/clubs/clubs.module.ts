@@ -12,6 +12,6 @@ import { ClubRepository } from './repositories/club.repository';
       useClass: ClubRepository,
     },
   ],
-  // exports: ['IClubRepository', ClubRepository]
+  exports: ['IClubRepository']//v3.2.0- Exporting IClubRepository for use in other modules
 })
 export class ClubsModule {}

@@ -9,7 +9,6 @@ export class ActivityService {
   constructor(
     @Inject('IActivityRepository')
     private readonly activityRepository: IActivityRepository) {}
-
   create(createActivityDto: CreateActivityDto) {
     return this.activityRepository.create(createActivityDto);
   }

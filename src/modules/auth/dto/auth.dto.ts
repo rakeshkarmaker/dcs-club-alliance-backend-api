@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger/dist/decorators/api-property.decora
 import {
   IsEmail,
   IsString,
+  Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
@@ -26,7 +27,23 @@ export class LoginDto {
   @IsString()
   @MinLength(1, { message: 'Password cannot be empty' })
   @MaxLength(20)
+  @IsString({ message: 'Password must be a string' })
+    @MinLength(8, { message: 'Password must be at least 8 characters' })
+    @MaxLength(20, { message: 'Password must be at most 20 characters' })
+    @Matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+      { message: 'Password too weak' },
+    )
   password: string;
+  deviceId: string;
+
+  @IsString()
+  @MaxLength(100)
+  // IP address saving ipv4 and ipv6 both
+  @Matches(
+    /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4})$/
+  , { message: 'IP address must be valid' })
+  ipAddress: string;
 }
 
 //IntersectionType to combining/merging CreateAuthDto and CreateUserDto

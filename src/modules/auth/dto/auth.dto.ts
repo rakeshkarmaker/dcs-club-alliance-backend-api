@@ -35,15 +35,6 @@ export class LoginDto {
       { message: 'Password too weak' },
     )
   password: string;
-  deviceId: string;
-
-  @IsString()
-  @MaxLength(100)
-  // IP address saving ipv4 and ipv6 both
-  @Matches(
-    /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4})$/
-  , { message: 'IP address must be valid' })
-  ipAddress: string;
 }
 
 //IntersectionType to combining/merging CreateAuthDto and CreateUserDto

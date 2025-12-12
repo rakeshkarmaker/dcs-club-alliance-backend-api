@@ -1,8 +1,7 @@
 
 
-
+//v3.2.1-  Added RefreshTokenDto to define the structure of refresh token payload
 export class RefreshTokenDto {
-  userId: number;
-  deviceId: string;
-  ipAddress: string;
+  sub: number; // IserID
+  email: string;
 }

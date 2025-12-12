@@ -5,8 +5,7 @@ import { AccessTokenDto } from "../dto/access-token.dto";
 import { RefreshTokenDto } from "../dto/refresh-token.dto";
 
 
-//v3.2.0- Implements the ITokenService for token generation and verification.
-
+//v3.2.1-  Added TokenService to handle JWT token generation and verification
 @Injectable()
 export class TokenService implements ITokenService {
     constructor(private readonly jwt: JwtService) { }
@@ -14,11 +13,7 @@ export class TokenService implements ITokenService {
     generateAccessToken(payload: AccessTokenDto): string {
         return this.jwt.sign(
             {
-                sub: payload.userId,
-                email: payload.email,
-                role: payload.role,
-                deviceId: payload.deviceId,
-                ipAddress: payload.ipAddress,
+                ...payload,
                 type: 'access',
 
             },
@@ -31,15 +26,13 @@ export class TokenService implements ITokenService {
     generateRefreshToken(payload: RefreshTokenDto): string {
         return this.jwt.sign(
             {
-                sub: payload.userId,
-                deviceId: payload.deviceId,
-                ipAddress: payload.ipAddress,
+                ...payload,
                 type: 'refresh',
             },
             {
             secret: process.env.JWT_REFRESH_SECRET,
             expiresIn: '7d'
-        }
+            }
         );
     }
     verifyAccessToken(token: string): any {

@@ -1,9 +1,12 @@
 
 //v3.2.1- Access Token Payload DTO
-export class AccessTokenDto {
-  sub: number;  // user id!
-  email: string; // user email in auth table
-  userType: string; // user role/type like admin, member etc mentioned in auth table
+export class AccessTokenDto { 
+  
+  // here ! means definite assignment assertion and indicates that these properties will be initialized elsewhere
+  
+  sub!: number;  // user id!
+  email!: string; // user email in auth table
+  userType!: string; // user role/type like admin, member etc mentioned in auth table
   status!: string; // user status like active, inactive, banned etc mentioned in auth table
   scopes?: string[]; //v3.2.1- Scope Added.
 

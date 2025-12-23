@@ -18,7 +18,7 @@ export class LoginDto {
   })
   @IsEmail()
   @MaxLength(50)
-  email: string;
+  readonly email!: string;
 
   @ApiProperty({
     example: 'StrongPass@123',
@@ -34,7 +34,7 @@ export class LoginDto {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
       { message: 'Password too weak' },
     )
-  password: string;
+  readonly password!: string;
 }
 
 //IntersectionType to combining/merging CreateAuthDto and CreateUserDto

@@ -8,23 +8,22 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 export class CreateClubDto {
   @ApiProperty({ example: "AI Club" })
   @IsString()
-  name: string;
+  readonly name!: string;
 
   @ApiProperty({ example: "ai-club" })
   @IsString()
-  slug: string;
+  readonly slug!: string;
 
   @ApiProperty({ example: "To promote AI learning" })
   @IsString()
-  mission: string;
+  readonly mission!: string;
 
   @ApiProperty({ example: "To become a leading AI community" })
   @IsString()
-  vision: string;
-
+  readonly vision!: string;
   @ApiProperty({ example: "We organize workshops, seminars, and competitions." })
   @IsString()
-  description: string;
+  readonly description!: string;
 
   @ApiPropertyOptional({ example: "https://cdn.example.com/logos/aiclub.png" })
   @IsOptional()

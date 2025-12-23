@@ -103,13 +103,15 @@ cd dcs-club-alliance-backend-api
 npm install @nestjs/core @nestjs/common @nestjs/platform-express
 npx prisma
 npm install @prisma/client
+npm install prisma@latest --save-dev
+  ```````````````````````````````````
+<!-- Prisma generation -->
 npm install prisma --save-dev
 npx prisma init
 
 npx prisma format
-npx prisma migrate dev --name init
+
 npx prisma generate
-    npm install prisma@latest --save-dev
 
 <!-- Github -->
 git add .

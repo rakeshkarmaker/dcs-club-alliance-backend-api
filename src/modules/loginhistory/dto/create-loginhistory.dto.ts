@@ -2,15 +2,14 @@ import { IsNumber, IsDate, IsString, MaxLength } from "class-validator";
 
 export class CreateLoginhistoryDto {
   @IsNumber()
-  userId: number;
+  readonly userId!: number;
 
   @IsDate()
-  loggedIn: Date;
+  readonly loggedIn!: Date;
 
   @IsString()
   @MaxLength(45)
-  ipAddress: string;
-
+  readonly ipAddress!: string;
   @IsString()
   @MaxLength(100)
   location?: string;

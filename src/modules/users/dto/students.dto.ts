@@ -3,19 +3,19 @@ import { IsDate, IsString } from 'class-validator';
 
 export class createStudentDto {
   @IsString()
-  rollNumber: string;
+  readonly rollNumber!: string;
 
   @IsString()
-  className: string;
+  className!: string;
 
   @IsString()
-  classSection: string;
+  readonly classSection!: string;
 
   @IsString()
-  idCardPic: string;
+  readonly idCardPic!: string;
 
   @IsDate()
-  createdAt: Date;
+  readonly createdAt!: Date;
 }
 
 export class updateStudentDto extends PartialType(createStudentDto) {}

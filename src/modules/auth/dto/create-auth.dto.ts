@@ -9,7 +9,7 @@ export class CreateAuthDto {
   @IsNotEmpty({ message: 'Email is required' })
   @IsEmail({}, { message: 'Email must be valid' })
   @MaxLength(50, { message: 'Email must be at most 50 characters' })
-  email: string;
+  readonly email!: string;
 
   @ApiProperty({
     example: 'StrongPass@123',
@@ -23,7 +23,7 @@ export class CreateAuthDto {
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
     { message: 'Password too weak' },
   )
-  password: string;
+  readonly password!: string;
 
   userId?: number;
 }

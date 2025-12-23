@@ -202,8 +202,8 @@ model Event {
   venue       String
   fee         Float
   formLink    String?  @map("form_link")
-  isFree    Boolean  @default(true) @map("is_free")
-  isActive  Boolean  @default(true) @map("is_active")
+  isFree      Boolean  @default(true) @map("is_free")
+  isActive    Boolean  @default(true) @map("is_active")
   createdAt   DateTime @default(now()) @map("created_at")
 
   certificates    Certificate[]

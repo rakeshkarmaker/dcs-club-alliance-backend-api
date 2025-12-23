@@ -11,19 +11,19 @@ import {
 export class UpdateEmailDto {
   @IsEmail()
   @MaxLength(50)
-  currentEmail: string;
+  readonly currentEmail!: string;
   @IsEmail()
   @MaxLength(50)
-  newEmail: string;
+  readonly newEmail!: string;
 
   @IsDate()
-  updatedAt: Date;
+  readonly updatedAt!: Date;
 }
 
 export class UpdatePassDto {
   @IsEmail()
   @MaxLength(50)
-  currentEmail: string;
+  readonly currentEmail!: string;
 
   //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
   @IsString()
@@ -45,5 +45,5 @@ export class UpdatePassDto {
   newPassword?: string;
 
   @IsDate()
-  updatedAt: Date;
+  readonly updatedAt!: Date;
 }

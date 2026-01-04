@@ -1,9 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateEventcategoryDto } from './dto/create-eventcategory.dto';
 import { UpdateEventcategoryDto } from './dto/update-eventcategory.dto';
+import type { IEventCategoryRepository } from './interfaces/ieventcategory.repository';
 
 @Injectable()
 export class EventcategoryService {
+
+  constructor(
+    @Inject('IEventCategoryRepository')
+    private readonly EventCategoryRepository: IEventCategoryRepository
+  ) { }
+  
   create(createEventcategoryDto: CreateEventcategoryDto) {
     return 'This action adds a new eventcategory';
   }

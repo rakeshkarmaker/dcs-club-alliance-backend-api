@@ -1,26 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateNoticeDto } from './dto/create-notice.dto';
 import { UpdateNoticeDto } from './dto/update-notice.dto';
+import type { INoticeRepository } from './interfaces/inotices.repository';
 
 @Injectable()
 export class NoticesService {
+  constructor(
+    @Inject('INoticeRepository')
+    private readonly noticeRepository: INoticeRepository
+  ){}
   create(createNoticeDto: CreateNoticeDto) {
-    return 'This action adds a new notice';
+    return this.noticeRepository.create(createNoticeDto);
   }
 
   findAll() {
-    return `This action returns all notices`;
+    return this.noticeRepository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} notice`;
+    return this.noticeRepository.findOne(id);
   }
 
   update(id: number, updateNoticeDto: UpdateNoticeDto) {
-    return `This action updates a #${id} notice`;
+    return this.noticeRepository.update(id, updateNoticeDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} notice`;
+    return this.noticeRepository.delete(id);
   }
 }

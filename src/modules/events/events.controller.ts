@@ -13,7 +13,7 @@ import { UpdateEventDto } from './dto/update-event.dto';
 
 @Controller('events')
 export class EventsController {
-  constructor(private readonly eventsService: EventsService) {}
+  constructor(private readonly eventsService: EventsService) { }
 
   @Post()
   create(@Body() createEventDto: CreateEventDto) {
@@ -39,4 +39,26 @@ export class EventsController {
   remove(@Param('id') id: string) {
     return this.eventsService.remove(+id);
   }
+
+  @Get('slug/:slug')
+  findBySlug(@Param('slug') slug: string) {
+    return this.eventsService.findBySlug(slug);
+  }
+  @Get('date/:date')
+  findByDate(@Param('date') date: string) {
+    return this.eventsService.findByDate(new Date(date));
+  }
+  @Get('ongoing')
+  findOngoingEvents() {
+    return this.eventsService.findOngoingEvents();
+  }
+  @Get('upcoming')
+  findUpcomingEvents() {
+    return this.eventsService.findUpcomingEvents();
+  }
+  @Get('past')
+  findPastEvents() {
+    return this.eventsService.findPastEvents();
+  }
+
 }

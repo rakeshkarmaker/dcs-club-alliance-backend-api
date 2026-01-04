@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Activity, Club } from '@prisma/client';
+import { Activity } from '@prisma/client';
 import { BaseRepository } from '../../../common/repositories/base.repository';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { CreateActivityDto } from '../dto/create-activity.dto';

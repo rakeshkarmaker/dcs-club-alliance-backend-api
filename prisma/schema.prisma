@@ -162,7 +162,7 @@ model Club {
   memberships Membership[]
   notices     Notice[]
   activities  Activity[]
-  events      Event[]
+  events      ClubEvent[]
   blogs       Blog[]
 }
 
@@ -191,7 +191,7 @@ model Activity {
   user User @relation(fields: [userId], references: [id])
 }
 
-model Event {
+model ClubEvent {
   id          Int      @id @default(autoincrement())
   clubId      Int      @map("club_id")
   title       String
@@ -220,8 +220,8 @@ model Certificate {
   qrCode   String   @map("qr_code")
   issuedAt DateTime @default(now()) @map("issued_at")
 
-  user  User  @relation(fields: [userId], references: [id])
-  event Event @relation(fields: [eventId], references: [id])
+  user  User      @relation(fields: [userId], references: [id])
+  event ClubEvent @relation(fields: [eventId], references: [id])
 }
 
 model EventCategory {
@@ -231,7 +231,7 @@ model EventCategory {
   description String
   createdAt   DateTime @default(now()) @map("created_at")
 
-  event Event  @relation(fields: [eventId], references: [id])
+  event ClubEvent @relation(fields: [eventId], references: [id])
   forms Form[]
 }
 
@@ -243,7 +243,7 @@ model Form {
   schemaJson Json     @map("schema_json")
   createdAt  DateTime @default(now()) @map("created_at")
 
-  event     Event          @relation(fields: [eventId], references: [id])
+  event     ClubEvent      @relation(fields: [eventId], references: [id])
   category  EventCategory  @relation(fields: [categoryId], references: [id])
   responses FormResponse[]
 }

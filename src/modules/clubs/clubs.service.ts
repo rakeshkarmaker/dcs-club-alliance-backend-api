@@ -1,27 +1,32 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateClubDto } from './dto/create-club.dto';
 import { UpdateClubDto } from './dto/update-club.dto';
+import type { IClubRepository } from './interfaces/iclub.repository';
 
+ //3.3.0- Implemented ClubsService with dependency injection for IClubRepository
 @Injectable()
 export class ClubsService {
-  constructor() {}
+  constructor(
+    @Inject('IClubRepository')
+    private readonly clubRepository: IClubRepository
+  ) {}
   create(createClubDto: CreateClubDto) {
-    return 'This action adds a new club';
+    return this.clubRepository.create(createClubDto);
   }
 
   findAll() {
-    return `This action returns all clubs`;
+    return this.clubRepository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} club`;
+    return this.clubRepository.findOne(id);
   }
 
   update(id: number, updateClubDto: UpdateClubDto) {
-    return `This action updates a #${id} club`;
+    return this.clubRepository.update(id, updateClubDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} club`;
+    return this.clubRepository.delete(id);
   }
 }

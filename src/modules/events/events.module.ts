@@ -4,6 +4,10 @@ import { EventsController } from './events.controller';
 
 @Module({
   controllers: [EventsController],
-  providers: [EventsService],
+  providers: [EventsService,{
+    provide: 'IEventsRepository',
+    useClass: EventsService,
+  }
+  ],
 })
 export class EventsModule {}

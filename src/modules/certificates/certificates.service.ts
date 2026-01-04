@@ -1,26 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateCertificateDto } from './dto/create-certificate.dto';
 import { UpdateCertificateDto } from './dto/update-certificate.dto';
+import type { ICertificatesRepository } from './interfaces/icertificates.repository';
 
+ //3.3.0- Implemented
 @Injectable()
 export class CertificatesService {
+  constructor(@Inject('ICertificatesRepository')
+  private readonly certificatesRepository: ICertificatesRepository) { }
+
   create(createCertificateDto: CreateCertificateDto) {
-    return 'This action adds a new certificate';
+    return this.certificatesRepository.create(createCertificateDto);
   }
 
   findAll() {
-    return `This action returns all certificates`;
+    return this.certificatesRepository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} certificate`;
+    return this.certificatesRepository.findOne(id);
   }
 
   update(id: number, updateCertificateDto: UpdateCertificateDto) {
-    return `This action updates a #${id} certificate`;
+    return this.certificatesRepository.update(id, updateCertificateDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} certificate`;
+    return this.certificatesRepository.delete(id);
   }
 }

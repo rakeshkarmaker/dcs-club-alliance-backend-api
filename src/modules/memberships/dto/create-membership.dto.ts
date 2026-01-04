@@ -1,1 +1,5 @@
-export class CreateMembershipDto {}
+export class CreateMembershipDto {
+
+
+    
+}

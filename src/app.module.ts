@@ -12,7 +12,6 @@ import { PrismaModule } from './prisma/prisma.module';
 import { CommonModule } from './common/common.module';
 import { ConfigModule } from '@nestjs/config';
 import { ActivitiesModule } from './modules/activity/activity.module';
-import { LoginhistoryModule } from './modules/loginhistory/loginhistory.module';
 import { MembershipsModule } from './modules/memberships/memberships.module';
 import { NoticesModule } from './modules/notices/notices.module';
 import { CommentsModule } from './modules/comments/comments.module';
@@ -21,6 +20,7 @@ import { BlogsModule } from './modules/blogs/blogs.module';
 import { FormsModule } from './modules/forms/forms.module';
 import { FormresponsesModule } from './modules/formresponses/formresponses.module';
 import { CertificatesModule } from './modules/certificates/certificates.module';
+import { LoginactivityModule } from './modules/loginactivity/loginactivity.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -35,7 +35,6 @@ import { CertificatesModule } from './modules/certificates/certificates.module';
     PrismaModule,
     CommonModule,
     ActivitiesModule,
-    LoginhistoryModule,
     MembershipsModule,
     NoticesModule,
     CommentsModule,
@@ -44,6 +43,7 @@ import { CertificatesModule } from './modules/certificates/certificates.module';
     FormsModule,
     FormresponsesModule,
     CertificatesModule,
+    LoginactivityModule,
   ], // Importing various feature modules to organize the application structure
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, PrismaService],

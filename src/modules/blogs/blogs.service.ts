@@ -1,26 +1,35 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
+import type { IBlogRespository } from './interfaces/iblog.repository';
 
 @Injectable()
 export class BlogsService {
+
+  constructor(
+    @Inject('IBlogRespository')
+    private readonly blogRepository: IBlogRespository
+  ){}
   create(createBlogDto: CreateBlogDto) {
-    return 'This action adds a new blog';
+    return this.blogRepository.create(createBlogDto);
   }
 
   findAll() {
-    return `This action returns all blogs`;
+    return this.blogRepository.findAll();
   }
+  
 
   findOne(id: number) {
-    return `This action returns a #${id} blog`;
+    return this.blogRepository.findOne(id);
   }
 
   update(id: number, updateBlogDto: UpdateBlogDto) {
-    return `This action updates a #${id} blog`;
+    return this.blogRepository.update(id, updateBlogDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} blog`;
+    return this.blogRepository.delete(id);
   }
 }
+
+

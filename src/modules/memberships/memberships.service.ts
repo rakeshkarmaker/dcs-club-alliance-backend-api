@@ -1,26 +1,33 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { CreateMembershipDto } from './dto/create-membership.dto';
 import { UpdateMembershipDto } from './dto/update-membership.dto';
+import type { IMembershipsRepository } from './interfaces/imemberships.repository';
 
 @Injectable()
 export class MembershipsService {
+  constructor(
+    @Inject('IMembershipsRepository')
+    private readonly membershipsRepository: IMembershipsRepository) { }
+
   create(createMembershipDto: CreateMembershipDto) {
-    return 'This action adds a new membership';
+    return this.membershipsRepository.create(createMembershipDto);
   }
 
   findAll() {
-    return `This action returns all memberships`;
+    return this.membershipsRepository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} membership`;
+    return this.membershipsRepository.findOne(id);
   }
 
   update(id: number, updateMembershipDto: UpdateMembershipDto) {
-    return `This action updates a #${id} membership`;
+    return this.membershipsRepository.update(id, updateMembershipDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} membership`;
+    return this.membershipsRepository.delete(id);
   }
+
+  
 }

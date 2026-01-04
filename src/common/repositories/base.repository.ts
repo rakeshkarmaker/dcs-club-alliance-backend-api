@@ -21,7 +21,6 @@ export abstract class BaseRepository<T, CreateDto, UpdateDto>
   async update(id: number, data: UpdateDto): Promise<T> {
     // Updates an existing entity by ID
     await this.exists(id); // Check if the entity exists
-
     return this.model.update({ where: { id }, data }); // Update the entity with the provided data
   }
 
@@ -40,7 +39,6 @@ export abstract class BaseRepository<T, CreateDto, UpdateDto>
   async delete(id: number): Promise<void> {
     // Deletes an entity by ID
     await this.exists(id); // Delete the entity
-
     return this.model.delete({ where: { id } }); // Return void
   }
 
